@@ -160,6 +160,9 @@ Feature: Basic HTTP consumer
       | body        |
       | Hello Mars! |
     Then a 500 error response is returned
+    When the pact test is done
+    Then the mock server status will NOT be OK
+    And the mock server status will be mismatches
     And the mismatches will contain a "body" mismatch with error "Expected body 'Hello World!' to match 'Hello Mars!' using equality but did not match"
 
   Scenario: Request with JSON body (positive case)
@@ -173,6 +176,9 @@ Feature: Basic HTTP consumer
       | body               |
       | JSON: {"one": "a"} |
     Then a 500 error response is returned
+    When the pact test is done
+    Then the mock server status will NOT be OK
+    And the mock server status will be mismatches
     And the mismatches will contain a "body" mismatch with error "Expected a Map with keys [one, two] but received one with keys [one]"
 
   Scenario: Request with XML body (positive case)
@@ -186,6 +192,9 @@ Feature: Basic HTTP consumer
       | body                                                                      |
       | XML: <?xml version="1.0" encoding="UTF-8" ?><values><one>A</one></values> |
     Then a 500 error response is returned
+    When the pact test is done
+    Then the mock server status will NOT be OK
+    And the mock server status will be mismatches
     And the mismatches will contain a "body" mismatch with error "Expected child <two/> but was missing"
 
   Scenario: Request with a binary body (positive case)
