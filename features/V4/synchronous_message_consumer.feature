@@ -23,7 +23,7 @@ Feature: Synchronous Message consumer
     Given a synchronous message interaction is being defined for a consumer test
     And a comment "this is a comment" is added to the synchronous message interaction
     When the Pact file for the test is generated
-    Then the first interaction in the Pact file will have "comments" = '{"text":["this is a comment"]}'
+    Then the first interaction in the Pact file will have "comments" = '{"text":"this is a comment"}'
 
   Scenario: When all messages are successfully processed
     Given a synchronous message interaction is being defined for a consumer test
