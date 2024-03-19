@@ -126,7 +126,7 @@ Feature: Basic HTTP provider
     And the verification results will contain a "Response status did not match" error
 
   Scenario: Verifies the response headers
-    Given a provider is started that returns the response from interaction 1, with the following changes:
+    Given a provider is started that returns the response from interaction 5, with the following changes:
       | headers                 |
       | 'X-TEST: Compatibility' |
     And a Pact file for interaction 5 is to be verified
