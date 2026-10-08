@@ -86,16 +86,20 @@ Feature: Message provider
 
   Scenario: Message with binary body (positive case)
     Given a provider is started that can generate the "image" message with "file: rat.jpg"
-    And a Pact file for "image":"file: rat.jpg" is to be verified
+    And a Pact file for "image" is to be verified with the following:
+      | body           | file: spider.jpg                                                |
+      | matching rules | contenttype-matcher-v3.json                                     |
     When the verification is run
     Then the verification will be successful
 
   Scenario: Message with binary body (negative case)
     Given a provider is started that can generate the "image" message with "file: rat.jpg"
-    And a Pact file for "image":"file: spider.jpg" is to be verified
+    And a Pact file for "image" is to be verified with the following:
+      | body           | file: sample.pdf                                                |
+      | matching rules | contenttype-matcher-v3.json                                     |
     When the verification is run
     Then the verification will NOT be successful
-    And the verification results will contain a "Body had differences" error
+    And the verification results will contain a "Body type had differences" error
 
   Scenario: Supports matching rules for the message metadata (positive case)
   Given a provider is started that can generate the "basic" message with "file: basic.json" and the following metadata:
