@@ -1,0 +1,5 @@
+syntax = "proto3";
+package compat;
+message UserRequest { string name = 1; }
+message User { int32 id = 1; string name = 2; }
+service Users { rpc GetUser(UserRequest) returns (User); }
